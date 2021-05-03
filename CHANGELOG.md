@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 
 
+## [0.1.1] - 2021-05-04
+### Changed
+
+	- Fixed wrong light damage settings.
+
+
+
 ## [0.1.0] - 2021-05-03
 ### Added
 
