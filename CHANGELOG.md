@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 
 
+## [0.2.0] - 2021-05-05
+### Added
+
+	- Support for "Bonemeal".
+
+
+
 ## [0.1.1] - 2021-05-04
 ### Changed
 

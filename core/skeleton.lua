@@ -96,6 +96,9 @@ mobs:register_mob('mobs_skeletons:skeleton', {
 		die_speed = 15,
 		die_loop = false,
 	},
+	drops = {
+		{name = 'bonemeal:bone', chance = 3, min = 1, max = 2}
+	},
 
 	on_spawn = function(self)
 		self.light_damage = mobs_skeletons.fn_DamagePerSecond(self)

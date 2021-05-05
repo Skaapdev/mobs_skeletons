@@ -43,7 +43,7 @@ local pr_LogMessage = function()
 	or (s_LOG_LEVEL == 'info')
 	or (s_LOG_LEVEL == 'verbose')
 	then
-		minetest.log('action', '[Mod] Mobs Skeletons [v0.1.1] loaded.')
+		minetest.log('action', '[Mod] Mobs Skeletons [v0.2.0] loaded.')
 	end
 end
 
