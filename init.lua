@@ -22,17 +22,40 @@
 
 --]]
 
+---
+--- Variables
+---
 
 -- Global mod's namespace
 mobs_skeletons = {}
 
-
 -- Used for localization
 local S = minetest.get_translator('mobs_skeletons')
 
+-- Setting to enable direct sunlight only death of skeletons
+local sunlight = minetest.settings:get_bool('mobs_skeletons.sunlight_kill') == true
+local light_damage_min = sunlight and 15 or (default.LIGHT_MAX / 2)
+local light_damage_max = sunlight and 15 or (default.LIGHT_MAX + 1)
+
+-- Sounds
+local sounds = {
+	random = 'mobs_skeletons_skeleton_random',
+	attack = 'mobs_skeletons_slash_attack',
+	damage = 'mobs_skeletons_skeleton_hurt',
+	death = 'mobs_skeletons_skeleton_death'
+}
+
+---
+--- Functions
+---
 
 -- Used to calculate the damage per second
 mobs_skeletons.fn_DamagePerSecond = function(self)
+
+	-- direct sunlight returns full damage
+	if sunlight then
+		return 7
+	end
 
 	-- Constants
 	local i_SECONDS_PER_DAY = 86400
@@ -121,8 +144,8 @@ mobs:register_mob('mobs_skeletons:skeleton', {
 	fall_damage = true,
 	lava_damage = 9999,
 	light_damage = 1,
-	light_damage_min = (default.LIGHT_MAX / 2),
-	light_damage_max = (default.LIGHT_MAX + 1),
+	light_damage_min = light_damage_min,
+	light_damage_max = light_damage_max,
 	suffocation = 0,
 	floats = 0,
 	reach = 4,
@@ -135,12 +158,7 @@ mobs:register_mob('mobs_skeletons:skeleton', {
 	blood_amount = 0,
 	pathfinding = 1,
 	makes_footstep_sound = true,
-	sounds = {
-		random = 'mobs_skeletons_skeleton_random',
-		attack = 'mobs_skeletons_slash_attack',
-		damage = 'mobs_skeletons_skeleton_hurt',
-		death = 'mobs_skeletons_skeleton_death'
-	},
+	sounds = sounds,
 	visual = 'mesh',
 	visual_size = {x = 2.7, y = 2.7},
 	collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
@@ -198,8 +216,8 @@ mobs:register_mob('mobs_skeletons:skeleton_archer', {
 	fall_damage = true,
 	lava_damage = 9999,
 	light_damage = 1,
-	light_damage_min = (default.LIGHT_MAX / 2),
-	light_damage_max = (default.LIGHT_MAX + 1),
+	light_damage_min = light_damage_min,
+	light_damage_max = light_damage_max,
 	suffocation = 0,
 	floats = 0,
 	reach = 4,
@@ -215,12 +233,7 @@ mobs:register_mob('mobs_skeletons:skeleton_archer', {
 	blood_amount = 0,
 	pathfinding = 1,
 	makes_footstep_sound = true,
-	sounds = {
-		random = 'mobs_skeletons_skeleton_random',
-		shoot_attack = 'mobs_skeletons_shoot',
-		damage = 'mobs_skeletons_skeleton_hurt',
-		death = 'mobs_skeletons_skeleton_death'
-	},
+	sounds = sounds,
 	visual = 'mesh',
 	visual_size = {x = 2.7, y = 2.7},
 	collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
@@ -273,8 +286,8 @@ mobs:register_mob('mobs_skeletons:skeleton_archer_dark', {
 	fall_damage = true,
 	lava_damage = 9999,
 	light_damage = 1,
-	light_damage_min = (default.LIGHT_MAX / 2),
-	light_damage_max = (default.LIGHT_MAX + 1),
+	light_damage_min = light_damage_min,
+	light_damage_max = light_damage_max,
 	suffocation = 0,
 	floats = 0,
 	reach = 4,
@@ -290,12 +303,7 @@ mobs:register_mob('mobs_skeletons:skeleton_archer_dark', {
 	blood_amount = 0,
 	pathfinding = 1,
 	makes_footstep_sound = true,
-	sounds = {
-		random = 'mobs_skeletons_skeleton_random',
-		shoot_attack = 'mobs_skeletons_shoot',
-		damage = 'mobs_skeletons_skeleton_hurt',
-		death = 'mobs_skeletons_skeleton_death'
-	},
+	sounds = sounds,
 	visual = 'mesh',
 	visual_size = {x = 2.7, y = 2.7},
 	collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
@@ -331,9 +339,9 @@ mobs:register_mob('mobs_skeletons:skeleton_archer_dark', {
 })
 
 
---
--- Skeletons spawning
---
+---
+--- Skeletons spawning
+---
 
 mobs:spawn({
 	name = 'mobs_skeletons:skeleton',
@@ -369,9 +377,9 @@ mobs:spawn({
 })
 
 
---
--- Spawn Eggs
---
+---
+--- Spawn Eggs
+---
 
 mobs:register_egg('mobs_skeletons:skeleton', S('Skeleton'),
 		'mobs_skeletons_skeleton_egg.png')
@@ -383,9 +391,9 @@ mobs:register_egg('mobs_skeletons:skeleton_archer_dark', S('Dark Skeleton Archer
 		'mobs_skeletons_skeleton_archer_dark_egg.png')
 
 
---
--- Aliases
---
+---
+--- Aliases
+---
 
 mobs:alias_mob('mobs:skeleton', 'mobs_skeletons:skeleton')
 mobs:alias_mob('mobs:skeleton_archer', 'mobs_skeletons:skeleton_archer')

@@ -54,3 +54,4 @@ https://wiki.minetest.net/Help:Installing_Mods
 	- Refactored code into single file.
 	- Used "wielditem" for arrows with new item and texture.
 	- Used new textures for spawn eggs.
+	- Added 'mobs_skeletons.sunlight_kill' setting, when true only sunlight kills.
