@@ -55,3 +55,4 @@ https://wiki.minetest.net/Help:Installing_Mods
 	- Used "wielditem" for arrows with new item and texture.
 	- Used new textures for spawn eggs.
 	- Added 'mobs_skeletons.sunlight_kill' setting, when true only sunlight kills.
+	- Skeletons spawn on group:cracky or group:crumbly nodes under a max light of 6

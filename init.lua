@@ -351,7 +351,7 @@ mobs:spawn({
 	active_object_count = 2,
 	min_height = -31000,
 	max_height = 31000,
-	day_toggle = false
+	max_light = 6,
 })
 
 mobs:spawn({
@@ -362,7 +362,7 @@ mobs:spawn({
 	active_object_count = 2,
 	min_height = -31000,
 	max_height = 31000,
-	day_toggle = false
+	max_light = 6
 })
 
 mobs:spawn({
@@ -373,7 +373,7 @@ mobs:spawn({
 	active_object_count = 2,
 	min_height = -31000,
 	max_height = 31000,
-	day_toggle = false
+	max_light = 6
 })
 
 
