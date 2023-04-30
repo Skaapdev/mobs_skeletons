@@ -34,25 +34,21 @@ https://wiki.minetest.net/Help:Installing_Mods
 # Changelog
 
 ## [0.1.0] - 2021-05-03
-### Added
 
 	- Initial release.
 
 ## [0.1.1] - 2021-05-03
-### Changed
 
 	- Fixed wrong light damage settings.
 
 ## [0.2.0] - 2021-05-05
-### Added
 
 	- Support for "Bonemeal".
 
 ## [0.3.0] - 2023-04-29
-### Changed
 
 	- Refactored code into single file.
-	- Used "wielditem" for arrows with new item and texture.
-	- Used new textures for spawn eggs.
+	- Arrows use 3d-style "wielditem" with new texture.
+	- Added new textures for spawn eggs.
 	- Added 'mobs_skeletons.sunlight_kill' setting, when true only sunlight kills.
-	- Skeletons spawn on group:cracky or group:crumbly nodes under a max light of 6
+	- Skeletons now spawn day or night under a max light level of 6.
