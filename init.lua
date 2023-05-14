@@ -34,8 +34,8 @@ local S = minetest.get_translator('mobs_skeletons')
 
 -- Setting to enable direct sunlight only death of skeletons
 local sunlight = minetest.settings:get_bool('mobs_skeletons.sunlight_kill') == true
-local light_damage_min = sunlight and 15 or (default.LIGHT_MAX / 2)
-local light_damage_max = sunlight and 15 or (default.LIGHT_MAX + 1)
+local light_damage_min = sunlight and 11 or (default.LIGHT_MAX / 2)
+local light_damage_max = sunlight and 16 or (default.LIGHT_MAX + 1)
 
 -- Sounds
 local sounds = {
@@ -99,20 +99,16 @@ mobs:register_arrow('mobs_skeletons:arrow', {
 	drop = false,
 
 	hit_player = function(self, player)
-		local pos = self.object:get_pos()
-		local damage = 6
 		player:punch(self.object, 1.0, {
 			full_punch_interval = 1.0,
-			damage_groups = {fleshy = damage},
+			damage_groups = {fleshy = 6},
 		}, nil)
 	end,
 
 	hit_mob = function(self, player)
-		local pos = self.object:get_pos()
-		local damage = 6
 		player:punch(self.object, 1.0, {
 			full_punch_interval = 1.0,
-			damage_groups = {fleshy = damage},
+			damage_groups = {fleshy = 6},
 		}, nil)
 	end,
 
