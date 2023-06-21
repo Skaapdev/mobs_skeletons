@@ -34,7 +34,7 @@ local S = minetest.get_translator('mobs_skeletons')
 
 -- Setting to enable direct sunlight only death of skeletons
 local sunlight = minetest.settings:get_bool('mobs_skeletons.sunlight_kill') == true
-local light_damage_min = sunlight and 11 or (default.LIGHT_MAX / 2)
+local light_damage_min = sunlight and 14 or (default.LIGHT_MAX / 2)
 local light_damage_max = sunlight and 16 or (default.LIGHT_MAX + 1)
 
 -- Sounds
@@ -336,41 +336,51 @@ mobs:register_mob('mobs_skeletons:skeleton_archer_dark', {
 
 
 ---
---- Skeletons spawning
+--- Skeletons spawning (check for custom spawn.lua)
 ---
 
-mobs:spawn({
-	name = 'mobs_skeletons:skeleton',
-	nodes = {'group:crumbly', 'group:cracky'},
-	neighbors = 'air',
-	chance = 7000,
-	active_object_count = 2,
-	min_height = -31000,
-	max_height = 31000,
-	max_light = 6,
-})
+local MP = minetest.get_modpath(minetest.get_current_modname()) .. "/"
+local input = io.open(MP .. "spawn.lua", "r")
 
-mobs:spawn({
-	name = 'mobs_skeletons:skeleton_archer',
-	nodes = {'group:crumbly', 'group:cracky'},
-	neighbors = 'air',
-	chance = 7000,
-	active_object_count = 2,
-	min_height = -31000,
-	max_height = 31000,
-	max_light = 6
-})
+if input then
+	input:close()
+	input = nil
+	dofile(MP .. "spawn.lua")
+else
 
-mobs:spawn({
-	name = 'mobs_skeletons:skeleton_archer_dark',
-	nodes = {'group:crumbly', 'group:cracky'},
-	neighbors = 'air',
-	chance = 7000,
-	active_object_count = 2,
-	min_height = -31000,
-	max_height = 31000,
-	max_light = 6
-})
+	mobs:spawn({
+		name = 'mobs_skeletons:skeleton',
+		nodes = {'group:crumbly', 'group:cracky'},
+		neighbors = 'air',
+		chance = 7000,
+		active_object_count = 2,
+		min_height = -31000,
+		max_height = 31000,
+		max_light = 6,
+	})
+
+	mobs:spawn({
+		name = 'mobs_skeletons:skeleton_archer',
+		nodes = {'group:crumbly', 'group:cracky'},
+		neighbors = 'air',
+		chance = 7000,
+		active_object_count = 2,
+		min_height = -31000,
+		max_height = 31000,
+		max_light = 6
+	})
+
+	mobs:spawn({
+		name = 'mobs_skeletons:skeleton_archer_dark',
+		nodes = {'group:crumbly', 'group:cracky'},
+		neighbors = 'air',
+		chance = 7000,
+		active_object_count = 2,
+		min_height = -31000,
+		max_height = 31000,
+		max_light = 6
+	})
+end
 
 
 ---
