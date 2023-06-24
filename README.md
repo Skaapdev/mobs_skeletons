@@ -1,5 +1,7 @@
 ### MOBS SKELETONS
-![Mob Skeletons' screenshot](screenshot.png)
+
+![](screenshot.png)
+
 **_Adds skeletons._**
 
 **Version:** 0.2.0
