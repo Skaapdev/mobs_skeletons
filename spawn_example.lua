@@ -58,9 +58,9 @@ mobs:spawn({
 ]]--
 
 mobs:spawn({
-	name = 'mobs_skeletons:skeleton',
-	nodes = {'group:crumbly', 'group:cracky'},
-	neighbors = 'air',
+	name = "mobs_skeletons:skeleton",
+	nodes = {"group:crumbly", "group:cracky"},
+	neighbors = "air",
 	chance = 7000,
 	active_object_count = 2,
 	min_height = -31000,
@@ -69,9 +69,9 @@ mobs:spawn({
 })
 
 mobs:spawn({
-	name = 'mobs_skeletons:skeleton_archer',
-	nodes = {'group:crumbly', 'group:cracky'},
-	neighbors = 'air',
+	name = "mobs_skeletons:skeleton_archer",
+	nodes = {"group:crumbly", "group:cracky"},
+	neighbors = "air",
 	chance = 7000,
 	active_object_count = 2,
 	min_height = -31000,
@@ -80,9 +80,9 @@ mobs:spawn({
 })
 
 mobs:spawn({
-	name = 'mobs_skeletons:skeleton_archer_dark',
-	nodes = {'group:crumbly', 'group:cracky'},
-	neighbors = 'air',
+	name = "mobs_skeletons:skeleton_archer_dark",
+	nodes = {"group:crumbly", "group:cracky"},
+	neighbors = "air",
 	chance = 7000,
 	active_object_count = 2,
 	min_height = -31000,

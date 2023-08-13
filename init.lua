@@ -30,19 +30,19 @@
 mobs_skeletons = {}
 
 -- Used for localization
-local S = minetest.get_translator('mobs_skeletons')
+local S = minetest.get_translator("mobs_skeletons")
 
 -- Setting to enable direct sunlight only death of skeletons
-local sunlight = minetest.settings:get_bool('mobs_skeletons.sunlight_kill') == true
+local sunlight = minetest.settings:get_bool("mobs_skeletons.sunlight_kill") == true
 local light_damage_min = sunlight and 14 or (default.LIGHT_MAX / 2)
 local light_damage_max = sunlight and 16 or (default.LIGHT_MAX + 1)
 
 -- Sounds
 local sounds = {
-	random = 'mobs_skeletons_skeleton_random',
-	attack = 'mobs_skeletons_slash_attack',
-	damage = 'mobs_skeletons_skeleton_hurt',
-	death = 'mobs_skeletons_skeleton_death'
+	random = "mobs_skeletons_skeleton_random",
+	attack = "mobs_skeletons_slash_attack",
+	damage = "mobs_skeletons_skeleton_hurt",
+	death = "mobs_skeletons_skeleton_death"
 }
 
 ---
@@ -62,7 +62,7 @@ mobs_skeletons.fn_DamagePerSecond = function(self)
 	local i_SECONDS_PER_5_MINUTES = 300
 
 	local i_hitPoints = self.health
-	local i_timeSpeed = tonumber(minetest.settings:get('i_timeSpeed')) or 72
+	local i_timeSpeed = tonumber(minetest.settings:get("i_timeSpeed")) or 72
 
 	if i_timeSpeed == 0 then
 		i_timeSpeed = 1
@@ -83,17 +83,17 @@ end
 ---
 
 -- Arrow item
-minetest.register_craftitem('mobs_skeletons:arrow', {
-	description = S('Skeleton Arrow'),
-	inventory_image = 'mobs_skeletons_arrow.png',
+minetest.register_craftitem("mobs_skeletons:arrow", {
+	description = S("Skeleton Arrow"),
+	inventory_image = "mobs_skeletons_arrow.png",
 	groups = {not_in_creative_inventory = 1}
 })
 
 -- Arrow entity
-mobs:register_arrow('mobs_skeletons:arrow', {
-	visual = 'wielditem',
+mobs:register_arrow("mobs_skeletons:arrow", {
+	visual = "wielditem",
 	visual_size = {x = 0.25, y = 0.25},
-	textures = {'mobs_skeletons:arrow'},
+	textures = {"mobs_skeletons:arrow"},
 	velocity = 35,
 	rotate = 0,
 	drop = false,
@@ -121,8 +121,8 @@ mobs:register_arrow('mobs_skeletons:arrow', {
 --- Skeleton Entities
 ---
 
-mobs:register_mob('mobs_skeletons:skeleton', {
-	type = 'monster',
+mobs:register_mob("mobs_skeletons:skeleton", {
+	type = "monster",
 	hp_min = (minetest.PLAYER_MAX_HP_DEFAULT - 10),
 	hp_max = (minetest.PLAYER_MAX_HP_DEFAULT + 10),
 	walk_velocity = 4,
@@ -150,20 +150,20 @@ mobs:register_mob('mobs_skeletons:skeleton', {
 	attack_npcs = true,
 	attack_players = true,
 	group_attack = true,
-	attack_type = 'dogfight',
+	attack_type = "dogfight",
 	blood_amount = 0,
 	pathfinding = 1,
 	makes_footstep_sound = true,
 	sounds = sounds,
-	visual = 'mesh',
+	visual = "mesh",
 	visual_size = {x = 2.7, y = 2.7},
 	collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
 	selectionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
 	textures = {
-		'default_tool_steelsword.png',
-		'mobs_skeletons_skeleton.png'
+		"default_tool_steelsword.png",
+		"mobs_skeletons_skeleton.png"
 	},
-	mesh = 'mobs_skeletons_skeleton.b3d',
+	mesh = "mobs_skeletons_skeleton.b3d",
 	animation = {
 		stand_start = 0,
 		stand_end = 40,
@@ -185,7 +185,7 @@ mobs:register_mob('mobs_skeletons:skeleton', {
 		die_loop = false,
 	},
 	drops = {
-		{name = 'bonemeal:bone', chance = 3, min = 1, max = 2}
+		{name = "bonemeal:bone", chance = 3, min = 1, max = 2}
 	},
 
 	on_spawn = function(self)
@@ -193,8 +193,8 @@ mobs:register_mob('mobs_skeletons:skeleton', {
 	end
 })
 
-mobs:register_mob('mobs_skeletons:skeleton_archer', {
-	type = 'monster',
+mobs:register_mob("mobs_skeletons:skeleton_archer", {
+	type = "monster",
 	hp_min = (minetest.PLAYER_MAX_HP_DEFAULT - 10),
 	hp_max = (minetest.PLAYER_MAX_HP_DEFAULT + 10),
 	walk_velocity = 4,
@@ -222,23 +222,23 @@ mobs:register_mob('mobs_skeletons:skeleton_archer', {
 	attack_npcs = true,
 	attack_players = true,
 	group_attack = true,
-	attack_type = 'shoot',
-	arrow = 'mobs_skeletons:arrow',
+	attack_type = "shoot",
+	arrow = "mobs_skeletons:arrow",
 	shoot_interval = 1.5,
 	shoot_offset = 1.0,
 	blood_amount = 0,
 	pathfinding = 1,
 	makes_footstep_sound = true,
 	sounds = sounds,
-	visual = 'mesh',
+	visual = "mesh",
 	visual_size = {x = 2.7, y = 2.7},
 	collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
 	selectionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
 	textures = {
-		'mobs_skeleton_bow.png',
-		'mobs_skeletons_skeleton_archer.png'
+		"mobs_skeleton_bow.png",
+		"mobs_skeletons_skeleton_archer.png"
 	},
-	mesh = 'mobs_skeletons_skeleton_archer.b3d',
+	mesh = "mobs_skeletons_skeleton_archer.b3d",
 	animation = {
 		stand_speed = 15,
 		stand_start = 0,
@@ -255,7 +255,7 @@ mobs:register_mob('mobs_skeletons:skeleton_archer', {
 		die_loop = false,
 	},
 	drops = {
-		{name = 'bonemeal:bone', chance = 3, min = 1, max = 2}
+		{name = "bonemeal:bone", chance = 3, min = 1, max = 2}
 	},
 
 	on_spawn = function(self)
@@ -263,8 +263,8 @@ mobs:register_mob('mobs_skeletons:skeleton_archer', {
 	end
 })
 
-mobs:register_mob('mobs_skeletons:skeleton_archer_dark', {
-	type = 'monster',
+mobs:register_mob("mobs_skeletons:skeleton_archer_dark", {
+	type = "monster",
 	hp_min = (minetest.PLAYER_MAX_HP_DEFAULT - 10),
 	hp_max = (minetest.PLAYER_MAX_HP_DEFAULT + 10),
 	walk_velocity = 4,
@@ -292,24 +292,24 @@ mobs:register_mob('mobs_skeletons:skeleton_archer_dark', {
 	attack_npcs = true,
 	attack_players = true,
 	group_attack = true,
-	attack_type = 'shoot',
-	arrow = 'mobs_skeletons:arrow',
+	attack_type = "shoot",
+	arrow = "mobs_skeletons:arrow",
 	shoot_interval = 1.5,
 	shoot_offset = 1.0,
 	blood_amount = 0,
 	pathfinding = 1,
 	makes_footstep_sound = true,
 	sounds = sounds,
-	visual = 'mesh',
+	visual = "mesh",
 	visual_size = {x = 2.7, y = 2.7},
 	collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
 	selectionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
 	textures = {
-		'mobs_skeleton_bow.png',
-		'mobs_skeletons_skeleton_archer_dark.png',
-		'mobs_skeletons_skeleton_archer_dark_overlay.png'
+		"mobs_skeleton_bow.png",
+		"mobs_skeletons_skeleton_archer_dark.png",
+		"mobs_skeletons_skeleton_archer_dark_overlay.png"
 	},
-	mesh = 'mobs_skeletons_skeleton_archer_dark.b3d',
+	mesh = "mobs_skeletons_skeleton_archer_dark.b3d",
 	animation = {
 		stand_speed = 15,
 		stand_start = 0,
@@ -326,7 +326,7 @@ mobs:register_mob('mobs_skeletons:skeleton_archer_dark', {
 		die_loop = false,
 	},
 	drops = {
-		{name = 'bonemeal:bone', chance = 3, min = 1, max = 2}
+		{name = "bonemeal:bone", chance = 3, min = 1, max = 2}
 	},
 
 	on_spawn = function(self)
@@ -349,9 +349,9 @@ if input then
 else
 
 	mobs:spawn({
-		name = 'mobs_skeletons:skeleton',
-		nodes = {'group:crumbly', 'group:cracky'},
-		neighbors = 'air',
+		name = "mobs_skeletons:skeleton",
+		nodes = {"group:crumbly", "group:cracky"},
+		neighbors = "air",
 		chance = 7000,
 		active_object_count = 2,
 		min_height = -31000,
@@ -360,9 +360,9 @@ else
 	})
 
 	mobs:spawn({
-		name = 'mobs_skeletons:skeleton_archer',
-		nodes = {'group:crumbly', 'group:cracky'},
-		neighbors = 'air',
+		name = "mobs_skeletons:skeleton_archer",
+		nodes = {"group:crumbly", "group:cracky"},
+		neighbors = "air",
 		chance = 7000,
 		active_object_count = 2,
 		min_height = -31000,
@@ -371,9 +371,9 @@ else
 	})
 
 	mobs:spawn({
-		name = 'mobs_skeletons:skeleton_archer_dark',
-		nodes = {'group:crumbly', 'group:cracky'},
-		neighbors = 'air',
+		name = "mobs_skeletons:skeleton_archer_dark",
+		nodes = {"group:crumbly", "group:cracky"},
+		neighbors = "air",
 		chance = 7000,
 		active_object_count = 2,
 		min_height = -31000,
@@ -387,23 +387,23 @@ end
 --- Spawn Eggs
 ---
 
-mobs:register_egg('mobs_skeletons:skeleton', S('Skeleton'),
-		'mobs_skeletons_skeleton_egg.png')
+mobs:register_egg("mobs_skeletons:skeleton", S("Skeleton"),
+		"mobs_skeletons_skeleton_egg.png")
 
-mobs:register_egg('mobs_skeletons:skeleton_archer', S('Skeleton Archer'),
-	'mobs_skeletons_skeleton_archer_egg.png')
+mobs:register_egg("mobs_skeletons:skeleton_archer", S("Skeleton Archer"),
+	"mobs_skeletons_skeleton_archer_egg.png")
 
-mobs:register_egg('mobs_skeletons:skeleton_archer_dark', S('Dark Skeleton Archer'),
-		'mobs_skeletons_skeleton_archer_dark_egg.png')
+mobs:register_egg("mobs_skeletons:skeleton_archer_dark", S("Dark Skeleton Archer"),
+		"mobs_skeletons_skeleton_archer_dark_egg.png")
 
 
 ---
 --- Aliases
 ---
 
-mobs:alias_mob('mobs:skeleton', 'mobs_skeletons:skeleton')
-mobs:alias_mob('mobs:skeleton_archer', 'mobs_skeletons:skeleton_archer')
-mobs:alias_mob('mobs:dark_skeleton_archer', 'mobs_skeletons:skeleton_archer_dark')
+mobs:alias_mob("mobs:skeleton", "mobs_skeletons:skeleton")
+mobs:alias_mob("mobs:skeleton_archer", "mobs_skeletons:skeleton_archer")
+mobs:alias_mob("mobs:dark_skeleton_archer", "mobs_skeletons:skeleton_archer_dark")
 
 
 print("[MOD] Mobs Skeletons loaded")
