@@ -118,6 +118,31 @@ mobs:register_arrow("mobs_skeletons:arrow", {
 })
 
 ---
+--- Dropped Items
+---
+
+local sword_drops = {
+	{name = "default:sword_steel", chance = 5, min = 1, max = 1}
+}
+
+local archer_drops = {}
+
+if minetest.get_modpath("bonemeal") then
+	table.insert(sword_drops, {name = "bonemeal:bone", chance = 3, min = 1, max = 2})
+	table.insert(archer_drops, {name = "bonemeal:bone", chance = 3, min = 1, max = 2})
+end
+
+if minetest.get_modpath("x_bows") then
+	table.insert(archer_drops, {name = "x_bows:bow_wood", chance = 10, min = 1, max = 1})
+	table.insert(archer_drops, {name = "x_bows:arrow_steel", chance = 3, min = 1, max = 3})
+end
+
+if minetest.get_modpath("bows") then
+	table.insert(archer_drops, {name = "bows:bow_wood", chance = 10, min = 1, max = 1})
+	table.insert(archer_drops, {name = "bows:arrow_steel", chance = 3, min = 1, max = 3})
+end
+
+---
 --- Skeleton Entities
 ---
 
@@ -184,9 +209,7 @@ mobs:register_mob("mobs_skeletons:skeleton", {
 		die_speed = 15,
 		die_loop = false,
 	},
-	drops = {
-		{name = "bonemeal:bone", chance = 3, min = 1, max = 2}
-	},
+	drops = sword_drops,
 
 	on_spawn = function(self)
 		self.light_damage = mobs_skeletons.fn_DamagePerSecond(self)
@@ -254,9 +277,7 @@ mobs:register_mob("mobs_skeletons:skeleton_archer", {
 		die_speed = 15,
 		die_loop = false,
 	},
-	drops = {
-		{name = "bonemeal:bone", chance = 3, min = 1, max = 2}
-	},
+	drops = archer_drops,
 
 	on_spawn = function(self)
 		self.light_damage = mobs_skeletons.fn_DamagePerSecond(self)
@@ -325,9 +346,7 @@ mobs:register_mob("mobs_skeletons:skeleton_archer_dark", {
 		die_speed = 15,
 		die_loop = false,
 	},
-	drops = {
-		{name = "bonemeal:bone", chance = 3, min = 1, max = 2}
-	},
+	drops = archer_drops,
 
 	on_spawn = function(self)
 		self.light_damage = mobs_skeletons.fn_DamagePerSecond(self)
