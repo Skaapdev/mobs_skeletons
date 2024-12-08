@@ -365,6 +365,7 @@ if input then
 	input:close()
 	input = nil
 	dofile(MP .. "spawn.lua")
+--[[
 else
 
 	mobs:spawn({
@@ -399,6 +400,7 @@ else
 		max_height = 31000,
 		max_light = 6
 	})
+--]]
 end
 
 
